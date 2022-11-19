@@ -42,6 +42,7 @@ import org.wso2.carbon.user.core.UserRealm;
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -138,7 +139,7 @@ public class RESTZipWSDLMediaTypeHandler extends ZipWSDLMediaTypeHandler {
 
                     int wsdlPathDepth = Integer.MAX_VALUE;
                     int xsdPathDepth = Integer.MAX_VALUE;
-                    File tempFile = File.createTempFile(tempFilePrefix, archiveExtension);
+                    File tempFile = Files.createTempFile(tempFilePrefix, archiveExtension).toFile();
                     File tempDir = new File(tempFile.getAbsolutePath().substring(0,
                             tempFile.getAbsolutePath().length() - archiveExtension.length()));
                     try {
